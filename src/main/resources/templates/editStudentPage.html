@@ -1,0 +1,125 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <script>
+      // JavaScript function to update balance fees based on fees and paid fees
+      function updateBalanceFees() {
+        // Get the values of fees and paid fees
+        var fees = parseFloat(document.getElementById("fees").value) || 0;
+        var paidFees = parseFloat(document.getElementById("pfees").value) || 0;
+
+        // Calculate balance fees
+        var balanceFees = fees - paidFees;
+
+        // Set the balance fees input value
+        document.getElementById("bfees").value = balanceFees.toFixed(2);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="col-5">
+      <div class="container">
+        <div class="card">
+          <div class="card-header bg-primary text-white text-center">
+            <h3>Edit Student</h3>
+          </div>
+          <div class="card-body">
+            <form th:action="@{/student/update}" method="POST" id="studentForm" th:object="${student}">
+              <div class="row">
+                <div class="col-2">
+                  <label for="id">ID</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" th:field="*{id}" class="form-control" readonly />
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="name">NAME</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" th:field="*{name}" class="form-control" required/>
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="college">COLLEGE</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" th:field="*{college}" class="form-control" required/>
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="address">ADDRESS</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" th:field="*{address}" class="form-control" required/>
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="contact">CONTACT</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" th:field="*{contact}" class="form-control" required/>
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="pcontact">PARENT CONTACT</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" th:field="*{pcontact}" class="form-control" required/>
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="course">COURSE</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" th:field="*{course}" class="form-control" required/>
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="fees">FEES</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" id="fees" th:field="*{fees}" class="form-control" oninput="updateBalanceFees()" required/>
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="pfees">PAID FEES</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" id="pfees" th:field="*{pfees}" class="form-control" oninput="updateBalanceFees()" required/>
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-2">
+                  <label for="bfees">BALANCE FEES</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" id="bfees" class="form-control" readonly />
+                </div>
+              </div><br />
+              <button type="submit" class="btn btn-success">Update <i class="fa fa-wrench" aria-hidden="true"></i></button>
+              <a th:href="@{/student/getAllStudents}" class="btn btn-primary">Show All Students</a>
+            </form>
+          </div>
+          <div class="card-footer"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

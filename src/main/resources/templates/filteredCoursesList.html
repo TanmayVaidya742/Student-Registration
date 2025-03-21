@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <title>Filtered Courses List</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Filtered Courses List (by Fees)</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="course : ${filteredCourses}">
+                    <td th:text="${course}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- filterByCourseFees.html -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <title>Filter Students by Course Fees</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Filter Students by Course Fees</h1>
+        <form th:action="@{/student/filterByCourseFeesResults}" method="get">
+            <div class="mb-3">
+                <label for="course" class="form-label">Select Course</label>
+                <select class="form-select" id="course" name="course" required>
+                    <option value="" selected disabled>Select Course</option>
+                    <option th:each="course : ${courses}" th:value="${course}" th:text="${course}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="minFees" class="form-label">Minimum Fees</label>
+                <input type="number" class="form-control" id="minFees" name="minFees" min="0" step="0.01" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="maxFees" class="form-label">Maximum Fees</label>
+                <input type="number" class="form-control" id="maxFees" name="maxFees" min="0" step="0.01" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Filter Students</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- filteredStudentsList.html -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <title>Filtered Students List</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Filtered Students List</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${filteredStudents}">
+                    <td th:text="${student.id}"></td>
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.course}"></td>
+                    <td th:text="${student.fees}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
